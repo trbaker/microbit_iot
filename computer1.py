@@ -2,7 +2,6 @@ import serial
 import requests
 import json
 
-
 ser = serial.Serial('/dev/cu.usbmodem143202', 115200, timeout=None)
 while True:
     data_raw = ser.readline()
