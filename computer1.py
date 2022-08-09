@@ -1,6 +1,7 @@
 import serial
 import requests
 import json
+import time
 
 ser = serial.Serial('/dev/cu.usbmodem143202', 115200, timeout=None)
 while True:
@@ -18,6 +19,7 @@ while True:
             "lat" : -94.23434, \
             "lon": -94.2342, \
             "temperature" : tempf, \
-            "humidity" : 0}}' 
+            "humidity" : 0}}'
             }
     x = requests.post(url, params=params)
+    time.sleep(180)       # integer is seconds to pause
