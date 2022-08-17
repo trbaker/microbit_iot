@@ -9,14 +9,15 @@ while True:
     # next few lines just clean up the serial data
     tempf = str(data_raw)[:7]
     tempf = tempf.replace("b'", "")
-    # print to screen (for now)
+    tempf = float(tempf)
+    # print to screen 
     print(tempf)
     # send data to sample ArcGIS Online service
     url = 'https://services3.arcgis.com/GzteEaZqBuJ6GIYr/arcgis/rest/services/survey123_910b6ea1c50743269a5b171a91fe6cc7_fieldworker/FeatureServer/0/addFeatures'
     params={"f":"pjson","token":"","rollbackOnFailure":"false","features":'{ \
         "attributes" : { \
             "controller" : "microbit sensor 1", \
-            "lat" : -94.23434, \
+            "lat" : 55.23434, \
             "lon": -94.2342, \
             "temperature" : tempf, \
             "humidity" : 0}}'
