@@ -1,6 +1,6 @@
 import serial
 import requests
-import json
+import ast
 import time
 
 ser = serial.Serial('/dev/cu.usbmodem143202', 115200, timeout=None)
@@ -22,5 +22,8 @@ while True:
             "temperature" : tempf, \
             "humidity" : 0}}'
             }
-    x = requests.post(url, params=params)
+    params=str(params).replace("tempf", str(tempf))
+    # converts the string to a python dictionary
+    params=ast.literal_eval(params)
+    x = requests.post(url, params)
     time.sleep(180)       # integer is seconds to pause
